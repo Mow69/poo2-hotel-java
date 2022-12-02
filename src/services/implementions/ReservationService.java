@@ -13,7 +13,7 @@ import services.interfaces.ReservationServiceInterface;
 public class ReservationService implements ReservationServiceInterface {
 
     @Override
-    public boolean reserverChambre(Chambre m_chambre, Client m_client, Date m_dateDebutReservationSaisies, Date m_datesFinReservationSaisies) {
+    public Commande reserverChambre(Chambre m_chambre, Client m_client, Date m_dateDebutReservationSaisies, Date m_datesFinReservationSaisies) {
         utils.Utils utils = new utils.Utils();
 
         String identifiant = utils.getIdentifiant();
@@ -30,7 +30,7 @@ public class ReservationService implements ReservationServiceInterface {
         
         Commande commande = new Commande(identifiant, formattedDateAchat, m_dateDebutReservationSaisies, m_datesFinReservationSaisies,  m_chambre);
         
-        // return commande;
+        return commande;
 
         // TODO: Créer ici la commande en mettant son param de date au format lisible par un humain,
         //  mais je le mettrais ensuite en string pour l'affichage dans le main
@@ -46,7 +46,7 @@ public class ReservationService implements ReservationServiceInterface {
         // private Date[] datesReservation;
         // private Chambre chambre;
 
-        return false;
+        // return false;
     }
 
     @Override
