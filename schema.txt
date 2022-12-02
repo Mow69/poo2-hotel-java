@@ -1,0 +1,56 @@
+Conception : 
+
+Classes :
+OK - Personne : classe générique pour l'héritage (extends) dans Personnel et Client :
+    props =
+    - nom,
+    - prénom
+OK - Personnel ou Hotesse de chambre :
+    props =
+    - héritage // nom,
+    - héritage // prénom,
+    - identifiant ?,
+    - chambres à nettoyer ? (Chambre[] listeChambreANettoyer)
+OK - Client : 
+    props = 
+    - héritage // nom, 
+    - héritage // prénom, 
+    - n° de chambre (int) ou chambre (Chambre)
+
+OK - Commande : pour les réservations. Chaque commande est liée à un client. Pas de commande sans client.
+props = 
+    - n° de réservation ou de commande 
+    - dates des jours réservés
+    - date d'achat de la commande (LocalDateTime dateDuJour)
+    - si réservée, le n° de chambre affectée à la commande ou directement la chambre (Chambre chambre)
+
+OK - Chambre : 
+props = 
+    - n° de chambre (int), 
+    - état de disponibilité (disponible ou indisponible / occupée ou non-occupée ou libre) (bool),
+    - état de propreté (nettoyée ou non nettoyée) (bool)
+    - statut de réservation (réservée par un client ou pas réservée) (bool)
+=> Question : est-ce que disponibilité = réservation ou non ? 
+on peut réserver à une date mais actuellement la chambre peut encore être inoccupée ???
+____________________________________________________________________
+Services :
+    - ReservationService : override les méthodes de son interface qu'elle implements
+
+    Singleton ??? :
+    - IdentifiantService : override les méthodes de son interface qu'elle implements
+    - ou Hotel qui contient toutes les chambres, commandes, clients, personnels
+
+____________________________________________________________________
+Interfaces :
+    OK - ReservationServiceInterface :
+        - réserver une chambre = créer une commande 
+        - assigner une chambre à nettoyer à une hôtesse
+    - IdentifiantServiceInterface :
+        - génère un identifiant aléatoire
+        - affecte l'identifiant généré à un Personnel ou à une Commande
+____________________________________________________________________
+Utils :
+    - méthode qui affiche la date du jour 
+    - méthode qui la convertit pour l'affichage en String 
+
+

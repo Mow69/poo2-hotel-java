@@ -1,0 +1,73 @@
+TP – Cahier des charges
+
+Créer une application métier qui permet de gérer un hôtel: 
+- Gérer les réservations (vérifier si chambre disponible et nettoyée et libérée)
+- Gérer le nettoyage des chambres (vérifier si la chambre a été réservée)
+- Gérer les clients et leurs commandes (la liste des réservations du client)
+
+Exclusion
+- L’application ne nécessite pas de stockage en base de données, ni d’IHM (Interface Homme Machine)
+- Le checkin et checkout ne sont pas pris en compte
+
+Tests
+- L’hôtel a 30 chambres, 10 chambres par étage
+- Une femme de ménage peut nettoyer 10 chambres
+- Deux clients réserveront au moins 11 chambres la même journée
+
+-------------------------------------------------------------------
+
+TP – Critères dévaluation
+
+- Développer l’application de gestion de l’hôtel en java (20 points)
+- Respecter le cahier des charges
+- Avoir une application qui fonctionne : des tests automatiques (main) devront permettre de vérifier le bon fonctionnement de l’application, avec un jeu de données
+- Respecter les bonnes pratiques de développement (nommages, commentaires, conception, …)
+- Intégrer les éléments de la POO (30 points)
+- Surcharger une méthode
+- Créer deux constructeurs
+- Override toString
+- Créer un héritage entre deux classes avec extends et implements 
+- Implémenter le pattern singleton
+- Utiliser l’encapsulation
+
+-------------------------------------------------------------------
+ADDENDUM :
+
+-> 1 seule femme de ménage (pas obligé de la créer)
+-> elle nettoie que les chambres qui ont été réservée (ou occupée selon si on distingue)
+-> 1 seul hotel
+-> 10 chambre par étage (chambre 100 à 109, puis 200 à 209...)
+-> on ne peut pas réserver une chambre si elle n'est pas disponible ou nettoyée, dans le cas où on n'a pas géré le checkin checkout
+-> les réservations se font à la journée 
+-> on peut avoir une chambre libre mais sale, dans ce cas on ne peut pas la réserver. A tester !
+
+-> 3 étages, 30 chambres, 10 chambre par étage.
+
+ex cas concret : 
+aujourd'hui
+11 chambres réservées
+aujourd'hui la femme de ménage a nettoyé 10 chambres
+Donc il reste une chambre réservée sale.
+Le lendemain, la chambre est libre mais sale, donc on ne peut toujours pas la réserver si on essaie.
+
+
+4 questions :
+- réservé = occupé ??? c'est comme je veux.
+- réserver plusieurs jours en une opération ? non réservation jour par jour 
+- 1 mm client peut réserver plusieurs chambres en mm temps ? un mm client peut réserver les 11 chambres 
+- on peut réserver en avance ? non à part si on veut gérer les dates
+
+
+TEST (dans le main) :
+il faut tester tous les cas du cahier des charge et ce qui a été dit à l'oral.
+Il faut ajouter des commentaire pour chaque point tester juste en-dessous
+par ex : ici on teste l'override de toString()
+par ex : ici on teste les 2 constructeurs 
+
+A revoir :
+- Override toString (qui renvoie l'adresse mémoire de l'objet, alors qu'on veut renvoyer l'attribut)
+- singleton 
+
+Deadline : 
+Dimanche de la semaine prochaine = 11/11/2022 23:59
+
