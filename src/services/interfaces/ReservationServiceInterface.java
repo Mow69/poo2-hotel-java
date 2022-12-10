@@ -1,10 +1,10 @@
 package services.interfaces;
 
+import java.text.ParseException;
 import java.util.Date;
 
 import data.Chambre;
 import data.Client;
-import data.Commande;
 import data.Personnel;
 
 public interface ReservationServiceInterface {
@@ -16,8 +16,9 @@ public interface ReservationServiceInterface {
      * @param m_dateDebutReservationSaisies
      * @param m_dateFinReservationSaisies
      * @return : l'instance de Commande créée si l'opération s'est bien déroulée
+     * @throws ParseException
      */
-    public Commande reserverChambre(Chambre m_chambre, Client m_client, Date m_dateDebutReservationSaisies, Date m_dateFinReservationSaisies);
+    public boolean reserverChambre(Chambre m_chambre, Client m_client, Date m_dateDebutReservationSaisies, Date m_dateFinReservationSaisies) throws ParseException;
 
     /**
      * Fonction pour planifier le nettoyage d'une chambre par une hôtesse à une date choisie

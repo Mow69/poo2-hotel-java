@@ -1,8 +1,6 @@
 package services.implementions;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import data.Chambre;
@@ -10,6 +8,7 @@ import data.Client;
 import data.Commande;
 import data.Personnel;
 import services.interfaces.ReservationServiceInterface;
+import utils.Utils;
 
 public class ReservationService implements ReservationServiceInterface {
     // Static variable reference of reservationService
@@ -27,35 +26,55 @@ public class ReservationService implements ReservationServiceInterface {
     }
 
     private ReservationService() {};
-    
+
     @Override
-    public Commande reserverChambre(Chambre m_chambre, Client m_client, Date m_dateDebutReservationSaisies, Date m_dateFinReservationSaisies) {
+    public boolean reserverChambre(Chambre m_chambre, Client m_client, Date m_dateDebutReservationSaisies, Date m_dateFinReservationSaisies) throws ParseException {
         utils.Utils utils = new utils.Utils();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         String identifiant = utils.getIdentifiant();
-        String dateAchat = utils.getDateDuJour();
-        Date formattedDateAchat = new Date();
-        // Date formattedDateDebutReservationSaisies = new Date();
-        // Date formattedFinReservationSaisies = new Date();
+        // Date dateAchat = utils.convertStringToDate(utils.getDateDuJour());
+        Date dateAchat = new Date();
 
-        try {
-            formattedDateAchat = simpleDateFormat.parse("08/12/2022");
+        // Comparaison date début et date fin pour la réservation
+        int resultatComparaisonDatesReservation = utils.compareDates(m_dateDebutReservationSaisies, m_dateFinReservationSaisies);
 
-            // formattedDateAchat = utils.formatStringToDate("08/12/2022");
-            // formattedDateDebutReservationSaisies = utils.formatStringToDate(m_dateDebutReservationSaisies);
-            // formattedFinReservationSaisies = utils.formatStringToDate(m_dateFinReservationSaisies);
+        if(Utils.DATE1_BEFORE_DATE2  == resultatComparaisonDatesReservation
+            || (Utils.DATE1_EQUALS_DATE2 == resultatComparaisonDatesReservation)) {
+            Commande commande = new Commande(identifiant, dateAchat, m_dateDebutReservationSaisies, m_dateFinReservationSaisies,  m_chambre);
 
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+            System.out.println(commande);
+        } 
 
-        
-        Commande commande = new Commande(identifiant, formattedDateAchat, m_dateDebutReservationSaisies, m_dateFinReservationSaisies,  m_chambre);
+        if(Utils.DATE1_AFTER_DATE2  == resultatComparaisonDatesReservation) {
+            System.out.println("Les dates saisies ne sont pas correctes.");
+        } 
+
+        // Comparaison pour la date début de réservation et la date de fin d'occupation de la chambre
+        // int resultatComparaisonDatesDebutReservationFinChambre = utils.compareDates(m_dateDebutReservationSaisies);
 
 
-        return commande;
+
+        // int comparaisonDates = utils.compareDates(m_dateDebutReservationSaisies, m_dateFinReservationSaisies);
+        // switch(comparaisonDates) {
+        //     case Utils.DATE1_BEFORE_DATE2:
+        //         Commande commande = new Commande(identifiant, dateAchat, m_dateDebutReservationSaisies, m_dateFinReservationSaisies,  m_chambre);
+                
+        //         System.out.println(commande);
+        //         break;
+        //     case Utils.DATE1_AFTER_DATE2:
+        //       // code block
+        //       break;
+        //       case Utils.DATE1_EQUALS_DATE2:
+        //       // code block
+        //       break;
+        //     default:
+        //       // code block
+        //   }
+
+            return false;
+
+
+
 
         // TODO: Créer ici la commande en mettant son param de date au format lisible par un humain,
         //  mais je le mettrais ensuite en string pour l'affichage dans le main
