@@ -51,11 +51,23 @@ public class Utils {
         return 0;
     }
 
+    public Date convertStringToDate(String dateString) throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return simpleDateFormat.parse(dateString);
+    }
+    
     public Date formatStringToDate(String m_dateString) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date formattedDate = sdf.parse(m_dateString);
         
         return formattedDate;
+    }
+
+    public String formatDateToString(Date m_date) { 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String date = simpleDateFormat.format(m_date);
+
+        return date;
     }
 
     public String getIdentifiant() {

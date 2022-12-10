@@ -17,25 +17,33 @@ public class Main {
     // public static void main(String[] args) throws ParseException {
         Utils utils = new Utils();
 
-        Chambre maChambre = new Chambre();
+        Chambre chambre1 = new Chambre(1, false, false, false);
         Client monClient = new Client();
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date dateDebutReservation = new Date();
         Date dateFinReservation = new Date();
+        Date dateAchat = new Date();
+
         try {
-            dateDebutReservation = utils.formatStringToDate("08/12/2022");
-            dateFinReservation = utils.formatStringToDate("16/12/2022");
+            dateDebutReservation = simpleDateFormat.parse("11/12/2022");
+            dateFinReservation = simpleDateFormat.parse("16/12/2022");
+            dateAchat = simpleDateFormat.parse(utils.getDateDuJour());
+
 
         } catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
+        // ReservationService maReservation = new ReservationService();
+        ReservationService maReservation = ReservationService.getInstance();
 
-        ReservationService maReservation = new ReservationService();
-
-        Commande commande = maReservation.reserverChambre(maChambre, monClient, dateDebutReservation, dateFinReservation);
+       Commande commande = maReservation.reserverChambre(chambre1, monClient, dateDebutReservation, dateFinReservation);
 
 
+        System.out.println(commande); 
+        
 
         //____________________________________________
 
@@ -50,7 +58,7 @@ public class Main {
         // System.out.println(date2); 
         // System.out.println(utils.compareDates(formattedDate1, formattedDate2)); 
 
-        System.out.println(utils.getIdentifiant()); 
+        // System.out.println(utils.getIdentifiant()); 
 
 
     }

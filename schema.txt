@@ -34,11 +34,12 @@ props =
 on peut réserver à une date mais actuellement la chambre peut encore être inoccupée ???
 ____________________________________________________________________
 Services :
-    - ReservationService : override les méthodes de son interface qu'elle implements
+   OK - ReservationService : override les méthodes de son interface qu'elle implements
 
-    Singleton ??? :
-    - IdentifiantService : override les méthodes de son interface qu'elle implements
-    - ou Hotel qui contient toutes les chambres, commandes, clients, personnels
+    OK- Singleton ??? :
+    NO- IdentifiantService : override les méthodes de son interface qu'elle implements
+    NO- ou Hotel qui contient toutes les chambres, commandes, clients, personnels
+    OK : helper de l'interface
 
 ____________________________________________________________________
 Interfaces :
@@ -46,7 +47,7 @@ Interfaces :
         - réserver une chambre = créer une commande 
         - assigner une chambre à nettoyer à une hôtesse
     - IdentifiantServiceInterface :
-        - génère un identifiant aléatoire
+        OK - génère un identifiant aléatoire
         - affecte l'identifiant généré à un Personnel ou à une Commande
 ____________________________________________________________________
 Utils :

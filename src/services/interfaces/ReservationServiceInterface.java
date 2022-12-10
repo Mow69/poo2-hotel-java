@@ -17,7 +17,7 @@ public interface ReservationServiceInterface {
      * @param m_dateFinReservationSaisies
      * @return : l'instance de Commande créée si l'opération s'est bien déroulée
      */
-    public Commande reserverChambre(Chambre m_chambre, Client m_client, Date m_dateDebutReservationSaisies, Date m_datesFinReservationSaisies);
+    public Commande reserverChambre(Chambre m_chambre, Client m_client, Date m_dateDebutReservationSaisies, Date m_dateFinReservationSaisies);
 
     /**
      * Fonction pour planifier le nettoyage d'une chambre par une hôtesse à une date choisie
