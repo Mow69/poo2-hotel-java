@@ -1,11 +1,8 @@
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import data.Chambre;
 import data.Client;
-import data.Commande;
-import data.Personnel;
 import services.implementions.ReservationService;
 import utils.Utils;
 
@@ -13,29 +10,24 @@ import utils.Utils;
  * Main
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
     // public static void main(String[] args) throws ParseException {
         Utils utils = new Utils();
 
-        Chambre maChambre = new Chambre();
+        Chambre chambre1 = new Chambre(1, false, false, false);
         Client monClient = new Client();
-        Date dateDebutReservation = new Date();
-        Date dateFinReservation = new Date();
-        try {
-            dateDebutReservation = utils.formatStringToDate("08/12/2022");
-            dateFinReservation = utils.formatStringToDate("16/12/2022");
 
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        Date dateDebutReservation = utils.formatStringToDate("08/12/2022");
+        Date dateFinReservation = utils.formatStringToDate("16/12/2022");
+        // Date dateAchat = utils.convertStringToDate(utils.getDateDuJour());
 
+        // ReservationService maReservation = new ReservationService();
+        ReservationService maReservation = ReservationService.getInstance();
 
-        ReservationService maReservation = new ReservationService();
-
-        Commande commande = maReservation.reserverChambre(maChambre, monClient, dateDebutReservation, dateFinReservation);
+       maReservation.reserverChambre(chambre1, monClient, dateDebutReservation, dateFinReservation);
 
 
+        
 
         //____________________________________________
 
@@ -50,7 +42,7 @@ public class Main {
         // System.out.println(date2); 
         // System.out.println(utils.compareDates(formattedDate1, formattedDate2)); 
 
-        System.out.println(utils.getIdentifiant()); 
+        // System.out.println(utils.getIdentifiant()); 
 
 
     }

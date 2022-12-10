@@ -6,9 +6,9 @@ import java.util.Date;
 import java.util.Random;
 
 public class Utils {
-    public final int DATE1_BEFORE_DATE2 = 1;
-    public final int DATE1_AFTER_DATE2 = 2;
-    public final int DATE1_EQUALS_DATE2 = 3;
+    public static final int DATE1_BEFORE_DATE2 = 1;
+    public static final int DATE1_AFTER_DATE2 = 2;
+    public static final int DATE1_EQUALS_DATE2 = 3;
 
     /**
      * Fonction utilitaire qui récupère, formate en "dd/MM/yyyy" et retourne la date du jour.
@@ -51,11 +51,23 @@ public class Utils {
         return 0;
     }
 
+    public Date convertStringToDate(String dateString) throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return simpleDateFormat.parse(dateString);
+    }
+
     public Date formatStringToDate(String m_dateString) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date formattedDate = sdf.parse(m_dateString);
         
         return formattedDate;
+    }
+
+    public String formatDateToString(Date m_date) { 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String date = simpleDateFormat.format(m_date);
+
+        return date;
     }
 
     public String getIdentifiant() {
