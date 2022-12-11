@@ -21,6 +21,7 @@ public class Commande {
 
         Utils utils = new Utils();
 
+        // Override la méthode toString
         @Override
         public String toString() {
             return "=================================" +

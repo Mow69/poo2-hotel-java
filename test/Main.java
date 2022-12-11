@@ -34,11 +34,15 @@ public class Main {
             hotel.add(new Chambre(i, true, true, false));
         }
 
-        // Test de la réservation des chambres
+        // ----- Test de la réservation des chambres -----
+        //// ----------- Tests sur plusieurs chambres ----------- ///
+
         // Créé 11 commandes du client1
         System.out.println("\n======== Réservation(s) en cours ========");
         for (int i = 0; i < 11; i++) {
             Chambre chambre = hotel.get(i);
+            // Si la chambre est réservable, on change son état pour la rendre réservée, 
+            // et on l'ajoute à la liste des chambres occupées qu'on va afficher ensuite
             if(true == maReservation.reserverChambre(chambre, client1, 16)) {
                 chambre.setEtatReservation(true);
                 chambre.setEtatDisponibilite(false);
@@ -46,13 +50,14 @@ public class Main {
 
                 chambresOccupees.add(chambre);
             }
-
         }
 
         // Créé 11 commandes du client2
         System.out.println("\n======== Réservation(s) en cours ========");
         for (int i = 11; i < 22; i++) {
             Chambre chambre = hotel.get(i);
+            // Si la chambre est réservable, on change son état pour la rendre réservée, 
+            // et on l'ajoute à la liste des chambres occupées qu'on va afficher ensuite
             if(true == maReservation.reserverChambre(chambre, client2, 16)) {
                 chambre.setEtatReservation(true);
                 chambre.setEtatDisponibilite(false);
@@ -62,19 +67,15 @@ public class Main {
             }
         }
 
-        // Test du nettoyage des chambres sales
+        // ----- Test du nettoyage des chambres sales -----
         // Nettoie 10 chambres par la femme de ménage
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i < 10; i++) {
             Chambre chambreANettoyer = chambresOccupees.get(i);
+            maReservation.planifieNettoyage(chambreANettoyer);
 
-            if(false == chambreANettoyer.getEtatProprete()) {
-                chambreANettoyer.setEtatProprete(true);
-                chambreANettoyer.setEtatDisponibilite(true);
-                chambreANettoyer.setEtatReservation(false);
-                chambresNettoyees.add(chambreANettoyer);
-            } else {
-                System.out.println("La chambre est déjà propre et ne peut pas être nettoyée davantage.");
-            }
+            // Une fois la chambre nettoyée, on l'ajoute 
+            // à la liste des chambres nettoyées qu'on va afficher ensuite
+            chambresNettoyees.add(chambreANettoyer);
         }
         System.out.println(
             "////////////////////\n" + 
@@ -86,15 +87,11 @@ public class Main {
         // Nettoie les 10 chambres suivantes par la femme de ménage
         for (int i = 10; i < 20; i++) {
             Chambre chambreANettoyer = chambresOccupees.get(i);
+            maReservation.planifieNettoyage(chambreANettoyer);
 
-            if(false == chambreANettoyer.getEtatProprete()) {
-                chambreANettoyer.setEtatProprete(true);
-                chambreANettoyer.setEtatDisponibilite(true);
-                chambreANettoyer.setEtatReservation(false);
-                chambresNettoyees.add(chambreANettoyer);
-            }  else {
-                System.out.println("La chambre est déjà propre et ne peut pas être nettoyée davantage.");
-            }
+            // Une fois la chambre nettoyée, on l'ajoute 
+            // à la liste des chambres nettoyées qu'on va afficher ensuite
+            chambresNettoyees.add(chambreANettoyer);
         }
         System.out.println(
             "////////////////////\n" + 
@@ -103,17 +100,7 @@ public class Main {
             "////////////////////"
         );
 
-        // TODO : tester que je ne peux pas réserver une chambre disponible ou inoccupée mais pas nettoyée
-        // -> on peut avoir une chambre libre mais sale, dans ce cas on ne peut pas la réserver. A tester !
-
-        // TODO :
-        // FAIRE cette méthode  - Gérer les réservations (vérifier si chambre disponible et nettoyée et libérée)
-        // FAIRE cette méthode - Gérer le nettoyage des chambres (vérifier si la chambre a été réservée)
-        // FAIRE cette méthode  - Gérer les clients et leurs commandes (la liste des réservations du client)
-    
-        // TODO : 
-        // -> elle nettoie que les chambres qui ont été réservée (ou occupée selon si on distingue
-
+        //// ----------- Tests sur une seule chambre ----------- ///
         Chambre chambre303 = chambresOccupees.get(21);
         System.out.println(chambre303);
 
