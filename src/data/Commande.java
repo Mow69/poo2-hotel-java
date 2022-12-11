@@ -1,88 +1,65 @@
 package data;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import utils.Utils;
 
 public class Commande {
         // initialize attributes
-        private String identifiant;
-        private Date dateAchat;
-        private Date dateDebutReservation;
-        private Date dateFinReservation;
-        private Chambre chambre;
+        private String m_identifiant;
+        private int m_jourReservation;
+        private Chambre m_chambre;
+        private Client m_client;
+
 
         // constructors
         public Commande() {}
-        public Commande(String identifiant, Date dateAchat, Date dateDebutReservation, Date dateFinReservation, Chambre chambre) {
-            this.identifiant = identifiant;
-            this.dateAchat = dateAchat;
-            this.dateDebutReservation = dateDebutReservation;
-            this.dateFinReservation = dateFinReservation;
-            this.chambre = chambre;
+        public Commande(String p_identifiant, int p_jourReservation, Chambre p_chambre, Client p_client) {
+            this.m_identifiant = p_identifiant;
+            this.m_jourReservation = p_jourReservation;
+            this.m_chambre = p_chambre;
+            this.m_client = p_client;
         }
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
         Utils utils = new Utils();
-        // String formattedDateAchat = utils.formatDateToString(this.getDateAchat());
-        // String formattedDateDebutReservation = utils.formatDateToString(this.getDateDebutReservation());
-        // String formattedDateFinReservation = utils.formatDateToString(this.getDateFinReservation());
 
-        // String formattedDateAchat = simpleDateFormat.format(this.getDateAchat());
-        // String formattedDateAchat = simpleDateFormat.format(new Date());
-        // String formattedDateDebutReservation = simpleDateFormat.format(this.getDateDebutReservation());
-        // String formattedDateFinReservation = simpleDateFormat.format(this.getDateFinReservation());
-        
-        // override toString()
         @Override
         public String toString() {
-            String formattedDateAchat = simpleDateFormat.format(new Date());
-            String formattedDateDebutReservation = simpleDateFormat.format(this.getDateDebutReservation());
-            String formattedDateFinReservation = simpleDateFormat.format(this.getDateFinReservation());
-
-            return "Commande n° " + this.getIdentifiant() + "\nTransaction du " + formattedDateAchat + "\nChambre n°" + this.getChambre().getNumero() + "\nRéservation du " + formattedDateDebutReservation + " au " + formattedDateFinReservation;
+            return "=================================" +
+            "\nNouvelle Commande n°" + this.getIdentifiant() + 
+            "\nRéservation du " + this.getJourReservation() + "/12/2022" +
+            "\nChambre  n°" + this.getChambre().getNumero() + 
+            " Par " + this.getClient();
         }
     
         // getters / setters    
         // identifiant
         public String getIdentifiant() {
-            return identifiant;
+            return m_identifiant;
         }
-        public void setIdentifiant(String identifiant) {
-            this.identifiant = identifiant;
-        }
-
-        // dateAchat
-        public Date getDateAchat() {
-            return dateAchat;
-        }
-        public void setDateAchat(Date dateAchat) {
-            this.dateAchat = dateAchat;
+        public void setIdentifiant(String p_identifiant) {
+            this.m_identifiant = p_identifiant;
         }
 
-        // dateDebutReservation
-        public Date getDateDebutReservation() {
-            return dateDebutReservation;
+        // jourReservation
+        public int getJourReservation() {
+            return m_jourReservation;
         }
-        public void setDateDebutReservation(Date dateDebutReservation) {
-            this.dateDebutReservation = dateDebutReservation;
-        }
-
-        // dateFinReservation
-        public Date getDateFinReservation() {
-            return dateFinReservation;
-        }
-        public void setDateFinReservation(Date dateFinReservation) {
-            this.dateFinReservation = dateFinReservation;
+        public void setJourReservation(int p_jourReservation) {
+            this.m_jourReservation = p_jourReservation;
         }
 
         // chambre
         public Chambre getChambre() {
-            return chambre;
+            return m_chambre;
         }
-        public void setChambre(Chambre chambre) {
-            this.chambre = chambre;
+        public void setChambre(Chambre p_chambre) {
+            this.m_chambre = p_chambre;
+        }
+
+        // client
+        public Client getClient() {
+            return m_client;
+        }
+        public void setClient(Client p_client) {
+            this.m_client = p_client;
         }
 }
