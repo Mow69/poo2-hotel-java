@@ -65,8 +65,8 @@ par ex : ici on teste l'override de toString()
 par ex : ici on teste les 2 constructeurs 
 
 A revoir :
-- Override toString (qui renvoie l'adresse mémoire de l'objet, alors qu'on veut renvoyer l'attribut)
-- singleton 
+OK - Override toString (qui renvoie l'adresse mémoire de l'objet, alors qu'on veut renvoyer l'attribut)
+OK - singleton 
 
 Deadline : 
 Dimanche de la semaine prochaine = 11/11/2022 23:59

@@ -2,8 +2,8 @@ package data;
 
 public abstract class Personne {
     // initialize attributes
-    private String nom;
-    private String prenom;
+    protected String nom;
+    protected String prenom;
 
     // constructors
     public Personne() {}

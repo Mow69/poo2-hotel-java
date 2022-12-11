@@ -1,3 +1,7 @@
+[Fichier qui a servi lors de la conception des classes et méthodes, 
+finalement il y a des différences avec ce qui a été réalisé, 
+notamment la gestion des dates par soucis de simplification]
+
 Conception : 
 
 Classes :

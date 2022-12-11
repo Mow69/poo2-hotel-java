@@ -18,6 +18,15 @@ public class Chambre {
         this.etatReservation = etatReservation;
     }
 
+    // override toString()
+    @Override
+    public String toString() {
+        return "Chambre n°" + this.getNumero() + " \n" + 
+        " Etat de Propreté : " + this.getEtatProprete() + " \n"  + 
+        " Etat de Disponibilité : " + this.getEtatDisponibilite() + " \n" +
+        " Etat de Réservation : " + this.getEtatReservation() + " \n";
+    }
+    
     // getters / setters
     // numero
     public int getNumero() {

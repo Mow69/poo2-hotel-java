@@ -1,21 +1,12 @@
 package data;
 
 public class Client extends Personne {
-    // initialize attributes
-    private Chambre chambre;
-
     // constructors
     public Client() {}
-    public Client(Chambre chambre) {
-        this.chambre = chambre;
+    public Client(String nom, String prenom) {
+        // get attributes from parent class Personne
+        this.nom = nom;
+        this.prenom = prenom;
     }
 
-    // getters / setters    
-    // chambreList
-    public Chambre getChambreList() {
-        return chambre;
-    }
-    public void setChambreList(Chambre chambre) {
-        this.chambre = chambre;
-    }
 }

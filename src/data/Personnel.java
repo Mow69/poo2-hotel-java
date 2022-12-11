@@ -7,9 +7,19 @@ public class Personnel extends Personne {
 
     // constructors
     public Personnel() {}
-    public Personnel(String identifiant, Chambre[] chambreList) {
+    public Personnel(String nom, String prenom, String identifiant, Chambre[] chambreList) {
         this.identifiant = identifiant;
         this.chambreList = chambreList;
+
+        // get attributes inherited from parent class Personne
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+
+    // override toString()
+    @Override
+    public String toString() {
+        return this.getPrenom() + " " + this.getNom() + " Agent n°" + this.getIdentifiant() + " \n";
     }
 
     // getters / setters
